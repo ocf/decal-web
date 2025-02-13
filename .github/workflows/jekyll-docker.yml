@@ -24,5 +24,6 @@ jobs:
     - uses: actions/checkout@v4
     - name: Deploy site to tsunami
       run: |
+        install -m 600 -D /dev/null ~/.ssh/id_ed25519
         echo '${{ secrets.sshkey }}' > ~/.ssh/id_ed25519
         ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no decal@ssh.ocf.berkeley.edu "mkdir -p ~/$(DEPLOY_DIR)" && rsync -avzpce "ssh -o StrictHostKeyChecking=no" --del _site/ --exclude static --exclude archives decal@ssh.ocf.berkeley.edu:$(DEPLOY_DIR)
