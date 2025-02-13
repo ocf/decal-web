@@ -26,4 +26,4 @@ jobs:
       run: |
         install -m 600 -D /dev/null ~/.ssh/id_ed25519
         echo '${{ secrets.sshkey }}' > ~/.ssh/id_ed25519
-        ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no decal@ssh.ocf.berkeley.edu "mkdir -p ~/$(DEPLOY_DIR)" && rsync -avzpce "ssh -o StrictHostKeyChecking=no" --del _site/ --exclude static --exclude archives decal@ssh.ocf.berkeley.edu:/home/d/de/decal/public_html
+        ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no decal@ssh.ocf.berkeley.edu "mkdir -p /home/d/de/decal/public_html" && rsync -avzpce "ssh -o StrictHostKeyChecking=no" --del _site/ --exclude static --exclude archives decal@ssh.ocf.berkeley.edu:/home/d/de/decal/public_html
