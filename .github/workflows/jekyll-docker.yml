@@ -15,8 +15,8 @@ jobs:
     - uses: actions/checkout@v4
     - name: Build the site in the jekyll/builder container
       run: |
-        pwd
-        docker run --rm jekyll/jekyll:latest pwd
+        test -d _site || mkdir _site
+        docker run --rm --volume=$PWD:/srv/jekyll:Z jekyll/jekyll:latest pwd
   deploy:
 
     runs-on: ubuntu-latest
