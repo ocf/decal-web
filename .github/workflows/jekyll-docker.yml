@@ -16,7 +16,8 @@ jobs:
     - name: Build the site in the jekyll/builder container
       run: |
         test -d _site || mkdir _site
-        docker run --rm --volume=$PWD:/srv/jekyll:Z jekyll/jekyll:latest pwd
+        docker run --rm --volume=$PWD:/srv/jekyll:Z jekyll/jekyll:latest jekyll build
+        ls
   deploy:
 
     runs-on: ubuntu-latest
