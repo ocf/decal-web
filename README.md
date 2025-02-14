@@ -1,8 +1,8 @@
-# OCF/XCF Linux SysAdmin DeCal Website
+# OCF Linux SysAdmin DeCal Website
 
 [![GitHub Actions Build](https://github.com/ocf/decal-web/actions/workflows/build-and-deploy.yml/badge.svg)](https://github.com/ocf/decal-web/actions/workflows/build-and-deploy.yml)
 
-This is the source of the OCF/XCF Unix System Administration DeCal website, currently available at [decal.ocf.berkeley.edu](https://decal.ocf.berkeley.edu).
+This is the source of the OCF Unix System Administration DeCal website, currently available at [decal.ocf.berkeley.edu](https://decal.ocf.berkeley.edu).
 
 The current iteration uses Jekyll to produce pages.
 
@@ -22,7 +22,7 @@ $ docker pull jekyll/jekyll
 ```
 3. Clone this repository
 ```bash
-$ git clone https://github.com/0xcf/decal-web
+$ git clone https://github.com/ocf/decal-web
 $ cd decal-web
 ```
 4. Build the site
@@ -50,7 +50,7 @@ $ ssh <ocf-username>@supernova.ocf.berkeley.edu
 ```
 2. Clone this repository
 ```bash
-$ git clone https://github.com/0xcf/decal-web
+$ git clone https://github.com/ocf/decal-web
 ```
 3. Start the Jekyll server on supernova with:
 ```bash
