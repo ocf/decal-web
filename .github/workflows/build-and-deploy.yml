@@ -1,0 +1,51 @@
+name: Build and Deploy
+
+on:
+  # Runs only when master is updated
+  push:
+    branches: [ "master" ]
+
+  # Allows manually running this workflow from the Actions Tab
+  workflow_dispatch:
+
+# Allow only one concurrent deployment, skips runs queued between the current 
+# run and latest queued. We don't cancel in progress to allow for the current
+# run to finish deploying to production.
+concurrency:
+  group: "production"
+  cancel-in-progress: false
+
+jobs:
+  build_and_deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
+
+    - name: Build with Jekyll
+      env:
+        JEKYLL_ENV: production
+      # Outputs to './_site' dir by default
+      run: bundle exec jekyll build
+
+    - name: Setup SSH keys
+      run: |
+        mkdir -p ~/.ssh
+        echo '${{ secrets.SSH_PRIV_KEY }}' > ~/.ssh/id_ed25519
+        chmod 400 ~/.ssh/id_ed25519
+        echo '${{ secrets.SSH_HOST_KEY }}' > ~/.ssh/known_hosts
+        chmod 400 ~/.ssh/known_hosts
+
+    - name: Deploy with rsync
+      run: |
+        rsync --archive --verbose --compress --partial --checksum --progress \
+        --human-readable --delete --exclude=static --exclude=archives \
+        _site/ decal@ssh.ocf.berkeley.edu:/home/d/de/decal/public_html
+
