@@ -34,6 +34,7 @@ jobs:
         JEKYLL_ENV: production
         # Override github pages default url
         url: decal.ocf.berkeley.edu
+        baseurl: /
       # Outputs to './_site' dir by default
       run: bundle exec jekyll build
 
