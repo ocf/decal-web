@@ -24,19 +24,13 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Setup Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        bundler-cache: true
-
-    - name: Build with Jekyll
-      env:
-        JEKYLL_ENV: production
-        # Override github pages default url
-        url: decal.ocf.berkeley.edu
-        baseurl: /
+    - name: Build with Docker
       # Outputs to './_site' dir by default
-      run: bundle exec jekyll build
+      run: |
+        docker run -it --rm \
+        --volume="$PWD:/work" \
+        ghcr.io/some-natalie/jekyll-in-a-can:latest \
+        bundle exec jekyll build
 
     - name: Setup SSH keys
       run: |
