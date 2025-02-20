@@ -27,7 +27,7 @@ jobs:
     - name: Build with Docker
       # Outputs to './_site' dir by default
       run: |
-        docker run -it --rm \
+        docker run --rm \
         --volume="$PWD:/work" \
         ghcr.io/some-natalie/jekyll-in-a-can:latest \
         bundle exec jekyll build
