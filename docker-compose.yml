@@ -1,0 +1,6 @@
+services:
+  jekyll:
+    build: .
+    user: "${UID}:${GID}"
+    volumes:
+      - .:/usr/src/jekyll
