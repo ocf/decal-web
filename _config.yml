@@ -17,7 +17,7 @@ title: Sysadmin DeCal
 tagline: Linux System Administration Decal
 description: A course covering the basics of setting up and administering a production-quality Linux server environment.
 author: Nikhil Jha, Ben Cuan
-baseurl: '/' # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: 'https://decal.ocf.berkeley.edu' # the base hostname & protocol for your site, e.g. http://example.com
 repository: "ocf/decal-web"
 exclude: ["Gemfile", "Gemfile.lock", "LICENSE", "README.md", vendor, Makefile]
