@@ -24,11 +24,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Setup Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        bundler-cache: true
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
 
+<<<<<<< HEAD
     - name: Build with Jekyll
       env:
         JEKYLL_ENV: production
@@ -38,6 +37,18 @@ jobs:
         baseurl: ""
       # Outputs to './_site' dir by default
       run: bundle exec jekyll build
+=======
+    - name: Cache Docker layers
+      uses: actions/cache@v3
+      with:
+        path: /tmp/.buildx-cache
+        key: ${{ runner.os }}-buildx-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-buildx-
+
+    - name: Build with Docker
+      run: docker compose up --build
+>>>>>>> 6768bd5df5835e6a1af20fc0828963ef3c98273c
 
     - name: Setup SSH keys
       run: |
