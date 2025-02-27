@@ -31,9 +31,10 @@ jobs:
       uses: actions/cache@v3
       with:
         path: /tmp/.buildx-cache
-        key: ${{ runner.os }}-buildx-${{ github.sha }}
+        key: ${{ runner.os }}-buildx-${{ hashFiles('Dockerfile', 'docker-compose.yml', 'Gemfile', 'Gemfile.lock') }}
         restore-keys: |
-          ${{ runner.os }}-buildx-
+          ${{ runner.os }}-buildx-${{ hashFiles('Dockerfile', 'docker-compose.yml', 'Gemfile', 'Gemfile.lock') }}
+
 
     - name: Build with Docker
       run: docker compose up --build
