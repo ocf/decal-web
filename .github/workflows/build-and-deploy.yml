@@ -3,7 +3,7 @@ name: Build and Deploy
 on:
   # Runs only when master is updated
   push:
-    branches: [ "master" ]
+    branches: [ "master", "pfpfix" ]
 
   # Allows manually running this workflow from the Actions Tab
   workflow_dispatch:
