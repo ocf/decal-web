@@ -4,7 +4,7 @@ pronouns: he/him
 role: Head Facilitator
 email: sawansri@ocf.berkeley.edu
 
-photo: sawansri.jpg
+photo: images/sawansri.jpg
 ---
 
 hello
